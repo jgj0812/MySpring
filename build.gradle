@@ -21,8 +21,17 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
 
-    // A005 lombok 추가
+    // A005 lombok 추가 ===> sync
     implementation('org.projectlombok:lombok:')
+
+    // A007 ==> sync
+    annotationProcessor('org.projectlombok:lombok:')
+    testImplementation('org.projectlombok:lombok:')
+    testAnnotationProcessor('org.projectlombok:lombok:')
+
+    // A011 : Set JPA  ==> sync
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

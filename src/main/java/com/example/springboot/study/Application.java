@@ -32,7 +32,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  *              Ctrl + Shift + a => plugins 에서 installed 에서 Lombok 확인
  *
- *              File > Settings > Build, Executing, Depl... > Complier > Annotation Proccessor
+ *              File > Settings > Build, Executing, Deployment > Compiler > Annotation Processors
  * */
 @SpringBootApplication
 public class Application {
