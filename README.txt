@@ -16,7 +16,13 @@ A011 : build.gradle 에 JPA사용하겠다고 설정
 A012 : domain.posts.Posts.java
 A013 : domain.posts.PostsRepository.java interface 를 만든다.
 A014 : test/ domain.posts.PostsRepositoryTest.java
+A015 : resources/application.properties 를 생성해서 로그를 남긴다.
 
+B001 : web.dto.PostsSaveRequestDto.java
+B002 : web.PostsApiController.java 이것을 먼저 만드는 것은 바람직하지 않음을 확인하기 위한 용도
+B003 : study.service.posts.PostsService.java
+B004 : web.PostsApiController.java PostsService에 DTO를 이용해 저장 명령 수행
+B005 : test/web.PostsApiControllerTest.java에서 단위테스트
 
 H2DB
     spring boot에서 제공하는 Built-in database
