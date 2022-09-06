@@ -29,6 +29,7 @@ B008 : Posts.java에 update()메소드 추가
 B009 : PostsService.java 에 update() 추가
 B010 : PostsApiController.java에 수정하기 Mapping 추가
 B011 : PostsApiControllerTest.java에서 단위테스트
+B012 : application.properties에 H2DB console 설정
 
 
 H2DB

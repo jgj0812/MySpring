@@ -58,18 +58,18 @@ public class PostsApiController {
      *          Create : POST
      *          Update : PUT
      *      @PathVariable (경로를 변수화하는 역할)
-     *      @GetMapping("api/v1/posts/${id}") 에서
-     *          {id}를 변수화하여 @PathVariable Long id에 매핑하는 역할
+     *      @GetMapping("api/v1/posts/{id}") 에서
+     *          {id}를 변수화하여 @PathVariable("id") Long id에 매핑하는 역할
      * 
      *      ===> 단위 테스트 : PostApiControllerTest.java에 가서 단위테스트
      * */
-    @PutMapping("/api/v1/posts/${id}")
+    @PutMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id,
                        @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
     
-    @GetMapping("api/v1/posts/${id}")
+    @GetMapping("api/v1/posts/{id}")
     public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
     }
