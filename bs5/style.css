@@ -1,0 +1,10 @@
+/* style.css */
+
+.colLine {
+    line-height: 200%;
+    min-height: 30px;
+    border-bottom: 1px dotted #BBBBBB;
+    border-top: 1px dotted #BBBBBB;
+    border-left: 1px dotted #BBBBBB;
+    border-right: 1px dotted #BBBBBB;
+}
