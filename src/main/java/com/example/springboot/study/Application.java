@@ -2,6 +2,7 @@ package com.example.springboot.study;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /*
  * A001
@@ -34,6 +35,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  *              File > Settings > Build, Executing, Deployment > Compiler > Annotation Processors
  * */
+
+/*
+ * B015 Auditing을 하고 있다고 알려줘야 한다.
+ *      Just Add
+ *          @EnableJpaAuditing
+ * */
+@EnableJpaAuditing
 @SpringBootApplication
 public class Application {
     public static void main(String[] args)

@@ -9,6 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /*
@@ -66,5 +67,29 @@ public class PostsRepositoryTest {
 
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+    }
+
+    /*
+     * B016 BaseTimeEntity 동작을 단위테스트
+     *  글 쓰고 나서 읽었을 때, 글쓴 시간을 확인을 정확하게 테스트하기 어려워서
+     *  오늘 새벽 0시 이후에 써진 글이냐를 확인
+     * */
+    @Test
+    public void auditingTest() {
+        LocalDateTime now = LocalDateTime.of(2022, 9, 6, 0, 0, 0);
+        postsRepository.save(Posts.builder()
+                                    .title("title")
+                                    .content("content")
+                                    .author("author")
+                                .build());
+
+        List<Posts> postsList = postsRepository.findAll();
+        Posts posts = postsList.get(0);
+
+        System.out.println("-------------------- crateDate = " + posts.getCreatedDate());
+        System.out.println("-------------------- modifiedDate = " + posts.getModifiedDate());
+
+        assertThat(posts.getCreatedDate()).isAfter(now);
+        assertThat(posts.getModifiedDate()).isAfter(now);
     }
 }

@@ -30,7 +30,20 @@ B009 : PostsService.java 에 update() 추가
 B010 : PostsApiController.java에 수정하기 Mapping 추가
 B011 : PostsApiControllerTest.java에서 단위테스트
 B012 : application.properties에 H2DB console 설정
+B013 : domain.BaseTimeEntity.java 추상 클래스
+B014 : Posts.java가 BaseTimeEntity 클래스를 상속 받도록 기능 추가
+B015 : application.java에 Auditing을 알려준다.(Annotation으로)
+B016 : PostsRepositoryTest.java에서 Auditing을 단위 테스트
 
+
+게시판
+    id, title, content, author, 글쓴 시간, 글 최종 수정시간, 비밀번호, 사용자id, ....
+    JPA Auditing 기술 제공
+        글쓴 시간, 글 수정한 시간정보를 관리해야할 때, 시스템이 처리해주는 방법
+        생성, 수정을 자동으로 감시(Auditing)하면서 데이터베이스를 이용하면 편리하다.
+
+    insert into posts (title, content, author, time) values ('aaa', 'bbb', 'ccc', now());
+    domain패키지에 BaseTimeEntity클래스 생성해야한다.
 
 H2DB
     spring boot에서 제공하는 Built-in database

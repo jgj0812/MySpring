@@ -29,16 +29,28 @@ package com.example.springboot.study.domain.posts;
  *
  * */
 
+import com.example.springboot.study.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+
+/*
+ * B014 Posts에 자동 감시(Auditing)을 수행하기 위해서
+ *  BaseTimeEntity를 상속받도록 변경
+ *
+ *  Do just only
+ *      extends BaseTimeEntity
+ *
+ *  프로그램이 시작할 때, 나는 Auditing을 하고있어라고 알려줘야 함.
+ *  Application.java
+ * */
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
