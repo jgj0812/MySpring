@@ -13,6 +13,7 @@ package com.example.springboot.study.service.posts;
 
 import com.example.springboot.study.domain.posts.Posts;
 import com.example.springboot.study.domain.posts.PostsRepository;
+import com.example.springboot.study.web.dto.PostsResponseDto;
 import com.example.springboot.study.web.dto.PostsSaveRequestDto;
 import com.example.springboot.study.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +42,13 @@ public class PostsService {
         posts.update(requestDto.getTitle(), requestDto.getContent());
 
         return id;
+    }
+
+    // Response를 위해 id찾기
+    // 업데이트 주소창
+    // localhost:8080/api/v1/posts/3
+    public PostsResponseDto findById(Long id) {
+        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No Data ... id = " + id));
+        return new PostsResponseDto(entity);
     }
 }

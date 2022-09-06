@@ -18,11 +18,11 @@ package com.example.springboot.study.web;
  * */
 
 import com.example.springboot.study.service.posts.PostsService;
+import com.example.springboot.study.web.dto.PostsResponseDto;
 import com.example.springboot.study.web.dto.PostsSaveRequestDto;
+import com.example.springboot.study.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /*
  * B004 서비스에 RequestDto 를 파라미터로 해서 Service에 저장 명령 수행
@@ -47,5 +47,30 @@ public class PostsApiController {
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {
         return postsService.save(requestDto);
+    }
+
+    /*
+     * B010 수정하기 Mapping 추가
+     * 
+     *     GET : http://localhost:8080/api/v1/posts/3
+     * 
+     *      주의할 점 :
+     *          Create : POST
+     *          Update : PUT
+     *      @PathVariable (경로를 변수화하는 역할)
+     *      @GetMapping("api/v1/posts/${id}") 에서
+     *          {id}를 변수화하여 @PathVariable Long id에 매핑하는 역할
+     * 
+     *      ===> 단위 테스트 : PostApiControllerTest.java에 가서 단위테스트
+     * */
+    @PutMapping("/api/v1/posts/${id}")
+    public Long update(@PathVariable Long id,
+                       @RequestBody PostsUpdateRequestDto requestDto) {
+        return postsService.update(id, requestDto);
+    }
+    
+    @GetMapping("api/v1/posts/${id}")
+    public PostsResponseDto findById(@PathVariable Long id) {
+        return postsService.findById(id);
     }
 }

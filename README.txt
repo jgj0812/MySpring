@@ -9,14 +9,14 @@ A004 : main/Application.java 실행
 A005 : build.gradle 에 롬복 추가
 A006 : main/ web/dto/HelloResponseDto.java
 A007 : src/ web/dto/HelloResponseDtoTest.java
-A008 : build.gradle에 롬복 상세 설정
+A008 : build.grale에 롬복 상세 설정
 A009 : HelloController.java
 A010 : HelloControllerTest.java
 A011 : build.gradle 에 JPA사용하겠다고 설정
 A012 : domain.posts.Posts.java
 A013 : domain.posts.PostsRepository.java interface 를 만든다.
 A014 : test/ domain.posts.PostsRepositoryTest.java
-A015 : resources/application.properties 를 생성해서 로그를 남긴다.
+A015 : resources/application.properties 을 생성해서 로그를 남긴다.
 
 B001 : web.dto.PostsSaveRequestDto.java
 B002 : web.PostsApiController.java 이것을 먼저 만드는 것은 바람직하지 않음을 확인하기 위한 용도
@@ -25,8 +25,11 @@ B004 : web.PostsApiController.java PostsService에 DTO를 이용해 저장 명�
 B005 : test/web.PostsApiControllerTest.java에서 단위테스트
 B006 : PostsUpdateRequestDto.java 수정하기 DTO
 B007 : PostsResponseDto.java 응답을 위한 DTO
-B008 : Posts.java에 update() 메소드 추가
-B009 : PostsService.java에 update() 메소드 추가
+B008 : Posts.java에 update()메소드 추가
+B009 : PostsService.java 에 update() 추가
+B010 : PostsApiController.java에 수정하기 Mapping 추가
+B011 : PostsApiControllerTest.java에서 단위테스트
+
 
 H2DB
     spring boot에서 제공하는 Built-in database
