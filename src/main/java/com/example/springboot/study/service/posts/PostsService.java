@@ -11,8 +11,10 @@ package com.example.springboot.study.service.posts;
  *      postsApiController.java 로 가서 코드 수정
  * */
 
+import com.example.springboot.study.domain.posts.Posts;
 import com.example.springboot.study.domain.posts.PostsRepository;
 import com.example.springboot.study.web.dto.PostsSaveRequestDto;
+import com.example.springboot.study.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +28,18 @@ public class PostsService {
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) {
         return postsRepository.save(requestDto.toEntity()).getId();
+    }
+
+    /*
+     * B009 : update() 메소드 추가
+     * */
+    @Transactional
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
+        // repository에 수정하기를 수행
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No Data ... id = " + id));
+
+        posts.update(requestDto.getTitle(), requestDto.getContent());
+
+        return id;
     }
 }

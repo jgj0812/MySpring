@@ -58,4 +58,13 @@ public class Posts {
         this.content = content;
         this.author = author;
     }
+
+    /*
+     * B008 title, content를 파라미터로 하는 메소드를 정의하면,
+     * 이를 가져다 쓰는 PostsResponseDto에서도 이 메소드를 사용할 수 있다.
+     * */
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
