@@ -1,3 +1,6 @@
+https://github.com/eurekasolution/MySpring
+https://github.com/jgj0812/MySpring
+
 Gradle Sync : Ctrl + Shift + o
 
 모듈 설치 : Ctrl + Shift + a
