@@ -13,6 +13,13 @@ table { border-collapse: collapse; }
 }
 
 /*
+    여러줄 처리
+ */
+.brControl {
+    white-space: pre;
+}
+
+/*
     매우 긴 제목의 글이 작성되었다고 가정하면..
     동해물과 백두산이...
  */

@@ -1,0 +1,53 @@
+<!--
+    C016
+    posts-save.mustache 파일을 복사해서 수정하는게 바람직
+ -->
+
+{{>layout/header}}
+
+<div class="row">
+    <div class="col text-primary">
+        <h5>글수정</h5>
+    </div>
+</div>
+
+<form>
+    <div class="row">
+        <div class="col-3 col-md-2 colLine">글번호</div>
+        <div class="col-9 col-md-10 colLine">
+            <input type="text" name="id" id="id" class="form-control" value="{{posts.id}}" readonly/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 col-md-2 colLine">제목</div>
+        <div class="col-9 col-md-10 colLine">
+            <input type="text" name="title" id="title" placeholder="제목 입력" required class="form-control" value="{{posts.title}}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 col-md-2 colLine">작성자</div>
+        <div class="col-9 col-md-10 colLine">
+            <input type="text" name="author" id="author" class="form-control" value="{{posts.author}}" readonly />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 col-md-2 colLine">내용</div>
+        <div class="col-9 col-md-10 colLine">
+            <textarea name="content" id="content" placeholder="내용 입력" rows="15" required class="form-control">{{posts.content}}</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col colLine text-center">
+            <button type="button" class="btn btn-primary btn-sm" id="btn-update">
+                <span class="material-icons">check_circle</span>
+                변경
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" onClick="location.href='/'">
+                <span class="material-icons">list_alt</span>
+                목록
+            </button>
+        </div>
+    </div>
+</form>
+
+{{>layout/footer}}

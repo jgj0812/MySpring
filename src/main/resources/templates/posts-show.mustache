@@ -1,0 +1,51 @@
+<!--
+    C014 글 내용보기
+ -->
+
+{{>layout/header}}
+    <div class="row">
+        <div class="col text-primary">
+            <h5>글 내용 보기</h5>
+        </div>
+    </div>
+
+    <input type="hidden" id="id" value="{{posts.id}}">
+    <div class="row">
+        <div class="d-none col-md-2 d-md-block colLine">제목</div>
+        <div class="col colLine fw-bold">
+            {{posts.title}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="d-none col-md-2 d-md-block colLine">작성자</div>
+        <div class="col colLine fw-bold">
+            {{posts.author}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="d-none col-md-2 d-md-block colLine">내용</div>
+        <div class="col colLine brControl" style="min-height:300px;">{{posts.content}}</div>
+    </div>
+
+    <!--
+        C015 : 수정 버튼에 링크 연결
+    -->
+    <div class="row">
+        <div class="col colLine text-center">
+            <button type="button" id="btnUpdate" class="btn btn-primary btn-sm" onclick="location.href='/posts/update/{{posts.id}}'">
+                <span class="material-icons">update</span>
+                <span class="d-none d-md-block">수정</span>
+            </button>
+            <button type="button" id="btn-delete" class="btn btn-primary btn-sm">
+                <span class="material-icons">delete</span>
+                <span class="d-none d-md-block">삭제</span>
+            </button>
+            <button type="button" id="btnList" class="btn btn-primary btn-sm" onclick="location.href='/'">
+                <span class="material-icons">list_alt</span>
+                <span class="d-none d-md-block">목록</span>
+            </button>
+        </div>
+    </div>
+{{>layout/footer}}
