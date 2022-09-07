@@ -48,8 +48,15 @@ B018 : IndexControllerTest.java 단위테스트
 B019 : src/main/resources/templates/index.mustache 파일 생성
 
 C001 : index.mustache 글쓰기 버튼
-                           https://fonts.google.com/icons
-C002 : layout
+C002 : posts-save.mustache 글쓰기 화면을 위한 HTML 페이지(Mustache Page)
+C003 : IndexController.java에 /posts/save를 등록
+C004 : /resources/static/css/style.css
+C005 : /resources/static/js/index.js
+C006 : footer.mustache에 index.js 파일 실행 코드 추가
+
+material-icons 아이콘 있는곳 : https://fonts.google.com/icons
+<span class="material-icons">아이콘</span>
+Inserting the icon 에서 태그안의 글자를 입력한다.
 
 Mustache : 매우 간단한 템플릿 엔진
     React 처럼 화면 틀을 미리 만들어 놓고, 특정 영역에 데이터베이스 정보를 출력

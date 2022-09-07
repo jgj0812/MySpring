@@ -19,4 +19,10 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    /*
+     * C003 /posts/save 등록
+     * */
+    @GetMapping("/posts/save")
+    public String postsSave() { return "posts-save"; }
 }
