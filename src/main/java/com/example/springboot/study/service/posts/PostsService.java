@@ -77,4 +77,19 @@ public class PostsService {
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    /*
+     * C020 삭제 코드
+     *      삭제를 만약에 3번 게시글을 삭제해라 라고 하면
+     *      우선 그 글이 있는지 확인하고,
+     *      있으면 삭제
+     *
+     *      DTO -> Service -> Controller
+     *      PostsApiController.java에 등록
+     * */
+    @Transactional
+    public void delete(Long id) {
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not Found id = " + id));
+        postsRepository.delete(posts);
+    }
 }

@@ -39,6 +39,8 @@ B009 : PostsService.java 에 update() 추가
 B010 : PostsApiController.java에 수정하기 Mapping 추가
 B011 : PostsApiControllerTest.java에서 단위테스트
 B012 : application.properties에 H2DB console 설정
+        spring.h2.console.enabled = true 설정후 Application을 실행
+        http://localhost:8080/h2-console 에 접속
 B013 : domain.BaseTimeEntity.java 추상 클래스
 B014 : Posts.java가 BaseTimeEntity 클래스를 상속 받도록 기능 추가
 B015 : application.java에 Auditing을 알려준다.(Annotation으로)
@@ -71,6 +73,19 @@ C017 : index.js 실제 수정처리를 한다.
 C018 : IndexController.java : 글 수정하기 화면을 구성하는 처리
 C019 : index.js 삭제 처리를 한다.
 C020 : PostsService.java 삭제하는 것을 처리할 예정
+C021 : PostsApiController.java 삭제를 위한 DELETE
+C022 : BaseTimeEntity.java 글 저장, 변경된 시간 정보를 내가 원하는 형태로 변경
+C023 : web.dto.PostsListsResponseDto.java 날짜 데이터가 바뀌었으므로 이곳을 String으로 변경
+
+    현재까지 테스트는 H2DB를 이용했다. 메모리가 삭제되는 문제가 발생했다.
+    MariaDB로 대체를 해보겠습니다.
+    https://www.apachefriends.org/download.html XAMPP
+    http://localhost/phpmyadmin/
+    DBName : spring, user : spring, pw: 1111
+
+C024 : build.gradle h2db -> Maria db 변경 -> sync
+C025 : Applicaton.properties : H2 -> Maria
+C026 : posts 테이블은 만들어 줘야함. JPA가 MariaDB를 바로 제어하지 못함.
 
 material-icons 아이콘 있는곳 : https://fonts.google.com/icons
 <span class="material-icons">아이콘</span>

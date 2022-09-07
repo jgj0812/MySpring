@@ -69,8 +69,18 @@ public class PostsApiController {
         return postsService.update(id, requestDto);
     }
     
-    @GetMapping("api/v1/posts/{id}")
+    @GetMapping("/api/v1/posts/{id}")
     public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
+    }
+
+    /*
+     * C021 DELETE하는 매핑 처리 Service의 delete() 호출
+     * 호출할 때, id만 파라미터로 주기만 하면 된다.
+     */
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id) {
+        postsService.delete(id);
+        return id;
     }
 }

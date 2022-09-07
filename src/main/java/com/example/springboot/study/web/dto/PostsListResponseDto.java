@@ -10,12 +10,16 @@ import java.time.LocalDateTime;
  *      DTO 처리가 끝나면 Repository에서 데이터를 가져와서 DTO로 만들어주는 Service를 수정하러 갑니다.
  *      service.posts.PostsService
  * */
+/*
+ * C023 날짜 데이터 타입 변경
+ * */
 @Getter
 public class PostsListResponseDto {
     private Long id;
     private String title;
     private String author;
-    private LocalDateTime modifiedDate;
+    private String modifiedDate;
+    //private LocalDateTime modifiedDate;
 
     public PostsListResponseDto(Posts entity) {
         this.id = entity.getId();

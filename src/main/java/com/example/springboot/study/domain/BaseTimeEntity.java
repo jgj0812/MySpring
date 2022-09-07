@@ -28,8 +28,17 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+/*
+ * C022 날짜 표현 형식을 내가 원하는 형태로 바꿔보기
+ *      이것을 위해, 밑에 코드를 변경할 껀데,
+ *      기록을 위해서 주석.
+ * */
+/*
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -39,4 +48,28 @@ public abstract class BaseTimeEntity {
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
+}
+*/
+
+@Getter
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+public abstract class BaseTimeEntity {
+    @CreatedDate
+    private String createdDate;     // LocalDateTime -> String
+
+    @LastModifiedDate
+    private String modifiedDate;    // LocalDateTime -> String
+
+    // 해당 엔티티를 저장하기 이전에 먼저 실행
+    @PrePersist
+    public void onPrePersist() {
+        this.createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        this.modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
 }
