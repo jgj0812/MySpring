@@ -13,13 +13,17 @@ package com.example.springboot.study.service.posts;
 
 import com.example.springboot.study.domain.posts.Posts;
 import com.example.springboot.study.domain.posts.PostsRepository;
+import com.example.springboot.study.web.dto.PostsListResponseDto;
 import com.example.springboot.study.web.dto.PostsResponseDto;
 import com.example.springboot.study.web.dto.PostsSaveRequestDto;
 import com.example.springboot.study.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -50,5 +54,27 @@ public class PostsService {
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No Data ... id = " + id));
         return new PostsResponseDto(entity);
+    }
+
+    /*
+     * C010
+     *      리스트를 트랙잭션으로 가져올 때
+     *      import org.springframework.transaction.annotation.Transactional;
+     *      와 같이 springframework에서 제공하는 transaction을 사용해야한다.
+     *      이전은 javax.transaction을 사용했었다.
+     *      javax의 트랜잭션은 Option을 허용하지 않고,
+     *      springframework의 트랜잭션은 Option을 허용하는데,
+     *      옵션으로 readonly같은 것을 추가할 수 있다.
+     *
+     *      DTO -> Service -> Controller 확인
+     *      IndexController에 가서 필요한 코드 추가
+     * */
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository
+                .findAllDesc()
+                .stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 }

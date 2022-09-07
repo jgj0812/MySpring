@@ -53,6 +53,11 @@ C003 : IndexController.java에 /posts/save를 등록
 C004 : /resources/static/css/style.css
 C005 : /resources/static/js/index.js
 C006 : footer.mustache에 index.js 파일 실행 코드 추가
+        글쓰기 성공하면 http://localhost:8080/h2-console에 접속해 데이터 확인
+C007 : index.mustache에 글 목록 보여주기
+C008 : posts.PostsRepository.java 목록에 보여줄 Posts 객체 만들기
+C009 : dto.PostsListResponseDto.java 리스트 객체를 전송하는 Dto를 만든다.
+C010 : PostsService.java에서 posts 객체를 만들어서 보낸다.
 
 material-icons 아이콘 있는곳 : https://fonts.google.com/icons
 <span class="material-icons">아이콘</span>
@@ -83,6 +88,8 @@ Mustache : 매우 간단한 템플릿 엔진
 
     insert into posts (title, content, author, time) values ('aaa', 'bbb', 'ccc', now());
     domain패키지에 BaseTimeEntity클래스 생성해야한다.
+
+H2DB CONSOLE 링크 : localhost:8080/h2-console
 
 H2DB
     spring boot에서 제공하는 Built-in database
@@ -208,3 +215,4 @@ JSON : JavaScript Object Notation
 }
 
 번외 : d3js.org (데이터 시각화 관련 자바스크립트 라이브러리)
+       프로그래밍씽킹 (책)

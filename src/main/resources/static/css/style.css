@@ -1,9 +1,26 @@
 /* style.css */
 
+a:link { text-decoration: none; color: #333333; }
+a:hover { text-decoration: none; color: #0000FF; }
+a:visited { text-decoration: none; color: #333333; }
+
+table { border-collapse: collapse; }
+
 .row {
     line-height: 200%;
     padding-top: 4px;
     padding-bottom: 4px;
+}
+
+/*
+    매우 긴 제목의 글이 작성되었다고 가정하면..
+    동해물과 백두산이...
+ */
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0;
 }
 
 .colLine {
