@@ -1,0 +1,51 @@
+<!--
+    C002 글쓰기 화면을 위한 HTML 페이지
+
+    제목 :________________
+    작성자 :______________
+    내용 :______________
+    등록, 목록
+ -->
+
+{{>layout/header}}
+
+    <div class="row">
+        <div class="col text-primary">
+            <h5>글쓰기</h5>
+        </div>
+    </div>
+
+    <form>
+        <div class="row">
+            <div class="col-3 col-md-2 colLine">제목</div>
+            <div class="col-9 col-md-10 colLine">
+                <input type="text" name="title" id="title" placeholder="제목 입력" required class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 col-md-2 colLine">작성자</div>
+            <div class="col-9 col-md-10 colLine">
+                <input type="text" name="author" id="author" placeholder="실명 입력" required class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 col-md-2 colLine">내용</div>
+            <div class="col-9 col-md-10 colLine">
+                <textarea name="content" id="content" placeholder="내용 입력" rows="15" required class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col colLine text-center">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-save">
+                    <span class="material-icons">check_circle</span>
+                    등록
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" onClick="location.href='/'">
+                    <span class="material-icons">list_alt</span>
+                    목록
+                </button>
+            </div>
+        </div>
+    </form>
+
+{{>layout/footer}}

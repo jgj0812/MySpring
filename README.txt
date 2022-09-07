@@ -40,11 +40,16 @@ B013 : domain.BaseTimeEntity.java 추상 클래스
 B014 : Posts.java가 BaseTimeEntity 클래스를 상속 받도록 기능 추가
 B015 : application.java에 Auditing을 알려준다.(Annotation으로)
 B016 : PostsRepositoryTest.java에서 Auditing을 단위 테스트
-mustache를 위한 설정 확인
-    File > Setting > Editor
+Mustache를 위한 설정 확인
+    File > Setting > Editor > File Types > Handlebars/Mustache > File Name Patters에
+    *.mustache 이 등록되어 있어야 한다.
 B017 : study.web.IndexController.java
 B018 : IndexControllerTest.java 단위테스트
 B019 : src/main/resources/templates/index.mustache 파일 생성
+
+C001 : index.mustache 글쓰기 버튼
+                           https://fonts.google.com/icons
+C002 : layout
 
 Mustache : 매우 간단한 템플릿 엔진
     React 처럼 화면 틀을 미리 만들어 놓고, 특정 영역에 데이터베이스 정보를 출력
