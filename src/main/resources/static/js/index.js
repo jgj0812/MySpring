@@ -11,9 +11,10 @@ var main = {
     save: function() {
         // 작성자 이름이 한글이라는 것을 보장하는 Regular Expression 검사
         // char_length()
-        let regexp = /^[가-힣]{2, 4}$/;
-        if (!regexp.test($('#author').val())) {
-            alert('작성자는 한글로 2자에서 4자만 가능합니다.');
+        let regexp = /^[가-힣]{2,4}$/;
+        if(!regexp.test($('#author').val()))
+        {
+            alert('작성자는 한글로 2~4자만 가능합니다.');
             return;
         }
 
