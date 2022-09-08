@@ -1,2 +1,3 @@
 # Project exclude paths
 .idea
+application-oauth.properties

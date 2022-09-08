@@ -1,5 +1,6 @@
 package com.example.springboot.study.web;
 
+import com.example.springboot.study.config.auth.dto.SessionUser;
 import com.example.springboot.study.domain.posts.Posts;
 import com.example.springboot.study.service.posts.PostsService;
 import com.example.springboot.study.web.dto.PostsResponseDto;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import javax.servlet.http.HttpSession;
+
 /*
  * B017 IndexController
  *      이거 만들고, 단위 테스트
@@ -27,6 +30,8 @@ import org.springframework.web.bind.annotation.PutMapping;
  * 
  * D009 hit를 추가. 주석에 D009
  * */
+
+// D036 세션처리
 @RequiredArgsConstructor    // C011에서 추가
 @Controller
 public class IndexController {
@@ -35,6 +40,8 @@ public class IndexController {
      * C011 에서 서비스의 findAllDesc()의 결과를 index.mustache에서 사용할 수 있는 posts객체로 만들어준다.
      * */
     private final PostsService postsService;
+
+    private final HttpSession httpSession;  // D036
 
     /*
     @GetMapping("/")
@@ -62,6 +69,14 @@ public class IndexController {
 
         model.addAttribute("hasPrev", pageList.hasPrevious());
         model.addAttribute("hasNext", pageList.hasNext());
+
+        // D036 세션 처리
+        // 로그인 정보를 변수(userName)로 만들어서 index.mustache로 전달해준다.
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
         return "index";
     }
 

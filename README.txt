@@ -169,6 +169,62 @@ D023 : PostsService.java : Pagination 처리
 D024 : IndexController.java / 매핑을 pagination으로 맞춰주기
         다 개발이 끝나면 size = 10 or 20로 변경해줘야 한다.
 D025 : index.mustache에서 화면에 페이지별로 보기를 변수(IndexController에서 만듦)를 이용해서 처리한다.
+D026 : 구글 클라우드 설정
+        https://console.cloud.google.com
+        API 및 서비스 -> 프로젝트 생성 -> SpringOAuth2 -> 사용자 인증정보
+        -> 사용자 인증정보 만들기 -> API 키 -> 키 복사
+        -> OAuth 동의 화면 (왼쪽 메뉴) -> 외부 체크 -> 만들기
+        --> 앱이름, 이메일, 개발자이메일등 필수항목 등록 -> 저장후 계속
+
+        2번 저장후 계속
+        3번 저장후 계속
+        왼쪽 메뉴 : 사용자 인증정보
+            사용자 인증정보 만들기 -> 클라이언트 ID 만들기
+            승인된 URI : http://localhost:8080/login/oauth2/code/google
+D027 : application.properties
+D028 : resources/application-oauth.properties을 만든다.
+D029 : domain.user.Role.java  enum 생성
+D030 : domain.user.User.java
+D031 : user.UserRepository.java
+D032 : bulid.gradle
+D033 : study.config.auth.SecurityConfig.java
+D034 : study.config.auth.CustomOAuth2UserService.java
+D035 : study.config.auth.dto.OAuthAttributes.java
+D036 : study.config.auth.dto.SessionUser.java
+D037 : IndexController.java 세션처리
+D038 : build.gradle, application.properties MariaDB -> H2DB
+        로그인은 되는데, 글쓰기에서 403 Forbidden 에러가 나는 것은 글쓰기 권한이 없어서 그렇다.
+        SecurityConfig.java 에서 /api/v1/** 에 접근 가능한 권한을 USER -> GUEST로 바꿔서 확인 가능
+D039 : MariaDB로 변환
+        build.gradle, application.properties
+        DB table 3개 만들어야 한다.
+
+        create table user (
+            id int(10) auto_increment,
+            name char(100),
+            email char(100),
+            picture char(255),
+            role    char(30),
+            created_date datetime,
+            modified_date datetime,
+            primary key(id)
+        );
+
+        create table spring_session (
+            primary_id char(255),
+            session_id char(255),
+            creation_time datetime,
+            last_access_time datetime,
+            MAX_INACTIVE_INTERVAL int(10),
+            expire_time datetime,
+            principal_name char(255)
+        );
+
+        create table spring_session_attributes (
+            session_primary_id char(255),
+            attribute_name char(255),
+            attribute_byte text
+        );
 
 material-icons 아이콘 있는곳 : https://fonts.google.com/icons
 <span class="material-icons">아이콘</span>

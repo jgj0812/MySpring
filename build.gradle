@@ -33,9 +33,13 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 
     // C024 H2DB -> MariaDB ---> sync
-    //implementation('com.h2database:h2')
-    implementation('org.mariadb.jdbc:mariadb-java-client:2.1.2')
+    implementation('com.h2database:h2')
+    //implementation('org.mariadb.jdbc:mariadb-java-client:2.1.2')
 
+    // D032 Google Auth -> Sync
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+    implementation('org.springframework.session:spring-session-jdbc')
+    testImplementation("org.springframework.security:spring-security-test")
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
