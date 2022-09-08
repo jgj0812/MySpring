@@ -18,6 +18,8 @@ import com.example.springboot.study.web.dto.PostsResponseDto;
 import com.example.springboot.study.web.dto.PostsSaveRequestDto;
 import com.example.springboot.study.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -107,5 +109,13 @@ public class PostsService {
     @Transactional
     public int increaseRecommend(Long id) {
         return postsRepository.increaseRecommend(id);
+    }
+
+    /*
+     * D023
+     * */
+    @Transactional(readOnly = true)
+    public Page<Posts> pageList(Pageable pageable) {
+        return postsRepository.findAll(pageable);
     }
 }

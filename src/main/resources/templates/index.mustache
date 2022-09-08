@@ -56,5 +56,24 @@
         </div>
     {{/posts}}
 
+    {{! Pagination }}
+    <div class="row">
+        <div class="col colLine text-center">
+            {{#hasPrev}}
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href='?page={{prev}}'">이전</button>
+            {{/hasPrev}}
+            {{^hasPrev}}
+                <button type="button" class="btn btn-secondary btn-sm" disabled>이전</button>
+            {{/hasPrev}}
+
+            {{#hasNext}}
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href='?page={{next}}'">다음</button>
+            {{/hasNext}}
+            {{^hasNext}}
+                <button type="button" class="btn btn-secondary btn-sm" disabled>다음</button>
+            {{/hasNext}}
+        </div>
+    </div>
+
 
 {{>layout/footer}}

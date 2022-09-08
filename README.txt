@@ -165,6 +165,10 @@ D019 : posts-show.mustache에 추천버튼
 D020 : index.js 추천 기능 추가
 D021 : posts-show.mustache 추천 표시부 처리
 D022 : PostsResponseDto 에 rec 추가후, DB 추가
+D023 : PostsService.java : Pagination 처리
+D024 : IndexController.java / 매핑을 pagination으로 맞춰주기
+        다 개발이 끝나면 size = 10 or 20로 변경해줘야 한다.
+D025 : index.mustache에서 화면에 페이지별로 보기를 변수(IndexController에서 만듦)를 이용해서 처리한다.
 
 material-icons 아이콘 있는곳 : https://fonts.google.com/icons
 <span class="material-icons">아이콘</span>

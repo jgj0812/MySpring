@@ -1,8 +1,14 @@
 package com.example.springboot.study.web;
 
+import com.example.springboot.study.domain.posts.Posts;
 import com.example.springboot.study.service.posts.PostsService;
 import com.example.springboot.study.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,11 +36,32 @@ public class IndexController {
      * */
     private final PostsService postsService;
 
+    /*
     @GetMapping("/")
     public String index(Model model) {
         // posts로 만들어주기
         model.addAttribute("posts", postsService.findAllDesc());
 
+        return "index";
+    }
+    */
+
+    // 파라미터의 size = 2는 한페이지당 보이는 라인수를 의미한다.
+    @GetMapping("/")
+    public String index(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC, size = 2) Pageable pageable) {
+        Page<Posts> pageList = postsService.pageList(pageable);
+
+        // posts로 만들어주기
+        //model.addAttribute("posts", postsService.findAllDesc());
+
+        // View가 화면 페이지 정보를 출력하기 위해서 필요한 정보들을 미리 만들어서 보내준다.
+        // 이 값들을 #post 변수 이름으로 사용할 예정
+        model.addAttribute("posts", pageList);
+        model.addAttribute("prev", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+
+        model.addAttribute("hasPrev", pageList.hasPrevious());
+        model.addAttribute("hasNext", pageList.hasNext());
         return "index";
     }
 
