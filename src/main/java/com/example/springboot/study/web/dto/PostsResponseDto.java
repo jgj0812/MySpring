@@ -21,11 +21,15 @@ public class PostsResponseDto {
     private String title;
     private String content;
     private String author;
+    private int hit;    // D012
+    private int rec;    // D022
 
     public PostsResponseDto(Posts entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.content = entity.getContent();
         this.author = entity.getAuthor();
+        this.hit = entity.getHit(); // D012
+        this.rec = entity.getRec(); // D022
     }
 }

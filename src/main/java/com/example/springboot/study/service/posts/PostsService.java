@@ -92,4 +92,20 @@ public class PostsService {
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not Found id = " + id));
         postsRepository.delete(posts);
     }
+
+    /*
+     * D007 hit를 업데이트하는 updateHit(Long id)
+     * */
+    @Transactional
+    public int updateHit(Long id) {
+        return postsRepository.updateHit(id);
+    }
+
+    /*
+     * D016
+     * */
+    @Transactional
+    public int increaseRecommend(Long id) {
+        return postsRepository.increaseRecommend(id);
+    }
 }

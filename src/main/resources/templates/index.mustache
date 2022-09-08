@@ -17,7 +17,15 @@
             </button>
         </div>
         <div class="col colLine text-end text-danger">
-            로그인처리
+            <!--
+                D013 로그인/로그아웃 영역 미리 작성
+             -->
+            {{#userName}}
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href='/logout'">{{userName}} 로그아웃</button>
+            {{/userName}}
+            {{^userName}}
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href='/oauth2/authorization/google'">구글로그인</button>
+            {{/userName}}
         </div>
     </div>
 
@@ -25,7 +33,9 @@
         <div class="col-1 colLine text-center">번호</div>
         <div class="col-6 colLine text-center">제목</div>
         <div class="col-2 colLine text-center">작성일</div>
-        <div class="col-3 colLine text-center">수정일</div>
+        <div class="col-2 colLine text-center">수정일</div>
+        <!-- D010 화면에 hit를 출력 -->
+        <div class="col-1 colLine text-center">읽음</div>
     </div>
 
     <!--
@@ -40,8 +50,11 @@
             <div class="col-1 colLine text-center">{{id}}</div>
             <div class="col-6 colLine ellipsis"><a href="/posts/show/{{id}}">{{title}}</a></div>
             <div class="col-2 colLine text-center">{{author}}</div>
-            <div class="col-3 colLine text-center">{{modifiedDate}}</div>
+            <div class="col-2 colLine text-center">{{modifiedDate}}</div>
+            <!-- D010 화면에 hit를 출력 -->
+            <div class="col-1 colLine text-center">{{hit}}</div>
         </div>
     {{/posts}}
+
 
 {{>layout/footer}}

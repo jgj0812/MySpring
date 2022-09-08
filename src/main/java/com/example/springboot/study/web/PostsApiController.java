@@ -83,4 +83,10 @@ public class PostsApiController {
         postsService.delete(id);
         return id;
     }
+
+    // D018 rec 추가
+    @PostMapping("/api/v1/rec/{id}")
+    public int increaseRecommend(@PathVariable Long id) {
+        return postsService.increaseRecommend(id);
+    }
 }

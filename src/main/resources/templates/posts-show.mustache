@@ -22,6 +22,18 @@
         <div class="col colLine fw-bold">
             {{posts.author}}
         </div>
+        <!--
+            D011 hit를 화면에 출력
+         -->
+        <div class="d-none col-md-2 d-md-block colLine">읽음</div>
+        <div class="col colLine fw-bold">
+            {{posts.hit}}
+        </div>
+        <!-- D021 -->
+        <div class="d-none col-md-2 d-md-block colLine">추천</div>
+        <div class="col colLine fw-bold">
+            <span id="idRec">{{posts.rec}}</span>
+        </div>
     </div>
 
     <div class="row">
@@ -45,6 +57,11 @@
             <button type="button" id="btnList" class="btn btn-primary btn-sm" onclick="location.href='/'">
                 <span class="material-icons">list_alt</span>
                 <span class="d-none d-md-block">목록</span>
+            </button>
+            <!-- D019 추천버튼 추가 -->
+            <button type="button" id="btn-rec" class="btn btn-primary btn-sm">
+                <span class="material-icons">recommend</span>
+                <span class="d-none d-md-block">추천</span>
             </button>
         </div>
     </div>

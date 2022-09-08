@@ -20,6 +20,13 @@ var main = {
         $('#btn-delete').on('click', function() {
             _this.delete();
         });
+
+        /*
+            D020 rec
+        */
+        $('#btn-rec').on('click', function() {
+            _this.rec();
+        });
     },
 
     save: function() {
@@ -102,6 +109,28 @@ var main = {
                 alert(JSON.stringify(error));
             })
         }
+    },
+    // D020 rec
+    rec: function() {
+        var id = $('#id').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/v1/rec/' + id,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8'
+        })
+        .done(function(){
+            alert('글이 추천되었습니다.');
+            let idRec = $('#idRec');
+            let newRec = parseInt(idRec.html()) + 1;
+            idRec.html(newRec);
+            //location.href='/';
+        })
+        .fail(function(error){
+            alert('글추천 에러입니다.');
+            alert(JSON.stringify(error));
+        })
     },
 };
 

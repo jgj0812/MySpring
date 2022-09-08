@@ -87,8 +87,18 @@ C024 : build.gradle h2db -> Maria db 변경 -> sync
 C025 : Applicaton.properties : H2 -> Maria
 C026 : posts 테이블은 만들어 줘야함. JPA가 MariaDB를 바로 제어하지 못함.
 
+create table posts (
+    id  bigint(20) auto_increment,
+    title varchar(200),
+    content text(4000),
+    author char(200),
+    created_date datetime,
+    modified_date datetime,
+    primary key(idx)
+);
 
-D001 : MariaDB -> H2DB 복원해서 동작
+
+D001 : MariaDB -> H2DB 복원해서 동작확인
 D002 : 클라우드를 위한 실행파일 만들기
             Gradle -> Task -> build -> bootJar 더블클릭 (Success)
             프로젝트 트리 -> build -> libs -> jar파일이 클라우드에 FTP로 올려서 실행할 파일
@@ -132,6 +142,29 @@ D003 : AWS 보안 설정
               sudo nohup java -jar (jar 파일) &
               history
 
+D004 : MariaDB를 사용할 수 있도록 변경(build.gradle, application.properties)
+D005 : Posts.java : hit 기능 추가
+D006 : PostsRepository.java 읽을 때 마다 hit 증가
+D007 : PostsService.java : hit를 업데이트하는 updateHit() 정의
+D008 : PostsListResponseDto.java 에서 hit 기능 추가
+D009 : IndexController.java 에서 hit 기능 추가
+D010 : index.mustache 에서 화면에 hit 기능 추가
+    Application 실행시 에러가 난다. MariaDB는 JPA에서 바로 컨트롤이 안되기 때문에
+    hit 필드를 다음과 같이 명령으로 추가한다.
+    alter table posts add hit int(10) default '0' after author;
+    실행하면 읽을 때 마다 hit값이 증가한다.
+D011 : posts-show.mustache 에 읽기 값을 표현
+D012 : PostsResponseDto.java 에 hit를 추가한다. 원래는 D007 이후에 작업을 했어야함.
+D013 : index.mustache에 로그인 여부에 따라서 로그인/로그아웃 버튼 작성
+D014 : Posts.java (D005 흉내내기)
+D015 : PostsRepository.java (D006)
+D016 : PostsService.java (D007)
+D017 : PostsListResponseDto.java (D008)
+D018 : PostsApiController.java (D009 변경, 왜냐하면 Api쪽이라서)
+D019 : posts-show.mustache에 추천버튼
+D020 : index.js 추천 기능 추가
+D021 : posts-show.mustache 추천 표시부 처리
+D022 : PostsResponseDto 에 rec 추가후, DB 추가
 
 material-icons 아이콘 있는곳 : https://fonts.google.com/icons
 <span class="material-icons">아이콘</span>

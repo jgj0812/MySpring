@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 /*
  * B017 IndexController
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  *      @Controller : 클래스 타입에 적용
  *          이것을 붙이면 해당 클래스를 웹 요청 처리하는 컨트롤러로 사용하게 된다.
+ * 
+ * D009 hit를 추가. 주석에 D009
  * */
 @RequiredArgsConstructor    // C011에서 추가
 @Controller
@@ -52,6 +56,8 @@ public class IndexController {
      * */
     @GetMapping("/posts/show/{id}")
     public String postsShow(@PathVariable Long id, Model model) {
+        postsService.updateHit(id); // D009 내용보기할 때 hit 값을 증가시킨 후 가져온다.
+                                    // index.mustache에 가서 hit 기능 추가
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("posts", dto);
         return "posts-show";

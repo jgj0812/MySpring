@@ -1,7 +1,9 @@
 package com.example.springboot.study.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -37,4 +39,16 @@ public interface PostsRepository extends JpaRepository<Posts, Long> {
     // C008일때 추가됩니다.
     @Query("SELECT p FROM Posts p ORDER BY p.id DESC")
     List<Posts> findAllDesc();
+
+    /*
+     * D006 읽을 때 마다 hit 값을 증가시켜주는 기능
+     *      실제 Repository에 영향을 주는 Service에 가서 updateHit() 추가
+     * */
+    @Modifying
+    @Query("UPDATE Posts p SET p.hit = p.hit + 1 WHERE p.id = :id")
+    int updateHit(@Param("id") Long id);
+
+    @Modifying
+    @Query("UPDATE Posts p SET p.rec = p.rec + 1 WHERE p.id = :id")
+    int increaseRecommend(@Param("id") Long id);
 }

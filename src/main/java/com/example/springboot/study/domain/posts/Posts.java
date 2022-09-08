@@ -47,6 +47,11 @@ import javax.persistence.*;
  *  프로그램이 시작할 때, 나는 Auditing을 하고있어라고 알려줘야 함.
  *  Application.java
  * */
+
+/*
+ * D005 읽기(hit) 기능 추가
+ *      추가되는 항목인 hit 변수를 추가해준다.
+ * */
 @Getter
 @NoArgsConstructor
 @Entity
@@ -62,13 +67,24 @@ public class Posts extends BaseTimeEntity {
     private String content;
 
     // 일부러 어노테이션 사용 안함
+    @Column(length = 50, nullable = false)
     private String author;
+
+    // D005
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int hit;
+
+    // D014
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int rec;
 
     @Builder
     public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
         this.author = author;
+
+        // hit 등은 입력되는 값이 아니고, 자동 결정되므로 처리하지 않음
     }
 
     /*
