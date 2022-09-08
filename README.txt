@@ -87,6 +87,52 @@ C024 : build.gradle h2db -> Maria db 변경 -> sync
 C025 : Applicaton.properties : H2 -> Maria
 C026 : posts 테이블은 만들어 줘야함. JPA가 MariaDB를 바로 제어하지 못함.
 
+
+D001 : MariaDB -> H2DB 복원해서 동작
+D002 : 클라우드를 위한 실행파일 만들기
+            Gradle -> Task -> build -> bootJar 더블클릭 (Success)
+            프로젝트 트리 -> build -> libs -> jar파일이 클라우드에 FTP로 올려서 실행할 파일
+                파일명은 build.gradle의 상단에 있는 SNAPSHOT...에서 결정된다.
+
+D003 : AWS 보안 설정
+        FTP : 20, 21 TCP
+        HTTP : 8080 TCP
+        SSH : 22 TCP (기본설정)
+
+        PUTTY-GEN 다운받아서 설치
+            KEY-PAIR(AWS.pem이라고 가정하면)
+
+        https://www.puttygen.com/download-putty
+
+            Generate -> Load(Aws.pem) 넣고, --> Save Private Key 버튼 클릭해서 AWS.ppk로 저장
+
+        PUTTY
+            connect -> SSH -> Auth -> Browse에서 PPK파일 선택
+            Session -> Host Name : ec2-43-XXX-XX-XXX.ap-northeast-2.compute.amazonaws.com
+                    Save Session 에 사용할 이름 -> Save
+            해당 이름을 더블클릭 했을때 AWS에 콘솔 접속이 되어야 한다.
+
+        FileZilla로 jar파일 업로드
+            파일 밑에 있는 컴퓨터 그림 -> 새 사이트
+                        -> 프로토콜 : SFTP
+                        호스트 : 아마존 주소(Public 도메인)
+                        로그인 유형 : 키 파일 선택
+                        사용자 : ubuntu
+                        키 파일 : AWS.ppk 선택
+                        -> 확인
+
+        AWS 설정은 되었다고 가정하고, 파일질라로 SFTP로 jar파일을 올렸다고 가정 후 할일
+              sudo apt-get update
+              sudo apt-get install openjdk-8-jdk
+              java -version
+              java -jar (jar 파일) &
+              ps aux
+              sudo kill -9 (프로세스 번호 PID)
+              ps aux
+              sudo nohup java -jar (jar 파일) &
+              history
+
+
 material-icons 아이콘 있는곳 : https://fonts.google.com/icons
 <span class="material-icons">아이콘</span>
 Inserting the icon 에서 태그안의 글자를 입력한다.
